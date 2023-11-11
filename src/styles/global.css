@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  --color-white: #f7f8fc;
+  --color-black: #313437;
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    font-size: 87.5%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    font-size: 75%;
+  }
+}
+
+body {
+  line-height: 1.7;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+button,
+a {
+  color: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+/*
+ * FIX for IOS
+ * https://stackoverflow.com/questions/66835241/gatsby-image-plugin-not-displaying-properly-on-ios-devices
+*/
+.gatsby-image-wrapper {
+  position: relative;
+  z-index: 0;
+}
+
+/*******************************                 UTILITY CLASSES               *******************************/
+.space-y-small > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}

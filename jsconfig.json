@@ -1,0 +1,11 @@
+// This file is just written for VSCode to recognize our imports
+// gatsby-plugin-root-import does the actual job
+
+{
+    "compilerOptions": {
+      "baseUrl": "src"
+    },
+    "include": [
+      "src"
+    ]
+  }
