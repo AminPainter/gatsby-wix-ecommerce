@@ -5,26 +5,26 @@ import { IconButton, Stack, Tooltip, Typography, styled } from '@mui/material';
 import { Counter, Icon } from 'ui';
 import { useCart } from 'hooks';
 import store from 'storage/main';
+import { getImageFromWixMedia } from 'utils/helpers';
 
-const CartItem = ({ lineItemId, name, image, alt, lineTotal, quantity, backlink, variantId }) => {
+const CartItem = ({ item }) => {
   const { updateCartItemQuantity } = useCart();
-  // const { variant } = useVariant(variantId);
 
   return (
     <Stack direction='row' justifyContent='space-between' alignItems='center'>
-      <ProductImage src={image} alt={alt} />
+      <ProductImage src={getImageFromWixMedia(item.image)} alt='PRODUCT' />
 
       <Stack gap={1} flex={1} alignItems='center'>
         <Typography
           textTransform='capitalize'
           component={Link}
-          to={backlink}
+          to={`/products/${item.url.split('/').at(-1)}`}
           onClick={() => {
             store.isCartOpen = false;
           }}>
           <Stack direction='row' alignItems='center'>
             <Icon name='ArrowUpRight' />
-            {name}
+            {item.productName.original}
           </Stack>
         </Typography>
 
@@ -32,20 +32,20 @@ const CartItem = ({ lineItemId, name, image, alt, lineTotal, quantity, backlink,
           <Tooltip title='Remove from cart' arrow>
             <IconButton
               sx={{ order: { xs: 100, md: 'initial' } }}
-              onClick={() => updateCartItemQuantity(lineItemId, 0)}>
+              onClick={() => updateCartItemQuantity(item._id, 0)}>
               <Icon name='Trash' />
             </IconButton>
           </Tooltip>
 
           <Counter
-            count={quantity}
+            count={item.quantity}
             minCount={0}
-            handleChange={newQuantity => updateCartItemQuantity(lineItemId, newQuantity)}
+            handleChange={newQuantity => updateCartItemQuantity(item._id, newQuantity)}
           />
         </Stack>
       </Stack>
 
-      <Typography>{lineTotal}</Typography>
+      <Typography>{item.price.formattedConvertedAmount}</Typography>
     </Stack>
   );
 };

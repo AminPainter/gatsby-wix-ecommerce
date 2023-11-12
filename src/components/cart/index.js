@@ -7,7 +7,6 @@ import CartItem from './cart-item';
 import { Icon, Button } from 'ui';
 import { useCart } from 'hooks';
 import store from 'storage/main';
-import { getImageFromWixMedia } from 'utils/helpers';
 
 const Cart = () => {
   const snap = useSnapshot(store);
@@ -34,20 +33,7 @@ const Cart = () => {
             <CartItemList gap={3}>
               {cart.lineItems.map((item, idx) => (
                 <div key={item._id}>
-                  <CartItem
-                    backlink={`/products/${item.url.split('/').at(-1)}`}
-                    lineItemId={item._id}
-                    image={getImageFromWixMedia(item.image).url}
-                    alt={getImageFromWixMedia(item.image).altText}
-                    name={item.productName.original}
-                    quantity={item.quantity}
-                    lineTotal={item.price.formattedConvertedAmount}
-                    variantId={
-                      item.catalogReference.options?.variantId
-                        ? `${item.catalogReference.options?.variantId}-${item.catalogReference.catalogItemId}`
-                        : null
-                    }
-                  />
+                  <CartItem item={item} />
                   {idx !== cart.lineItems.length - 1 && <Divider sx={{ mt: 2 }} />}
                 </div>
               ))}
@@ -63,7 +49,7 @@ const Cart = () => {
 
               <Link to='/shop'>
                 <Button
-                  endIcon={<Icon name='TrendingUp' color='common.white' />}
+                  endIcon={<Icon name='TrendingUp' />}
                   onClick={() => {
                     store.isCartOpen = false;
                   }}>
@@ -90,7 +76,7 @@ const Cart = () => {
             <Button
               component={GatsbyLink}
               to='/checkout'
-              startIcon={<Icon name='CreditCard' color='common.white' />}
+              startIcon={<Icon name='CreditCard' />}
               onClick={handleCloseCart}>
               Proceed to checkout
             </Button>
