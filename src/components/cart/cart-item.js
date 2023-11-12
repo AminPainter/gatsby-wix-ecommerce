@@ -23,7 +23,7 @@ const CartItem = ({ item }) => {
             store.isCartOpen = false;
           }}>
           <Stack direction='row' alignItems='center'>
-            <Icon name='ArrowUpRight' />
+            <Icon name='ArrowUpRight' color='neutral.black' />
             {item.productName.original}
           </Stack>
         </Typography>
@@ -33,7 +33,7 @@ const CartItem = ({ item }) => {
             <IconButton
               sx={{ order: { xs: 100, md: 'initial' } }}
               onClick={() => updateCartItemQuantity(item._id, 0)}>
-              <Icon name='Trash' />
+              <Icon name='Trash' color='neutral.black' />
             </IconButton>
           </Tooltip>
 

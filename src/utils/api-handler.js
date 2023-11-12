@@ -13,6 +13,5 @@ const apiHandler = fn => {
 export default apiHandler;
 
 export const handleApi = err => {
-  console.log(err);
   enqueueSnackbar(err.message);
 };
