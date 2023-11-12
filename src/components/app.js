@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { SnackbarProvider } from 'notistack';
 
 import Layout from 'components/layout';
 import { theme } from 'ui';
@@ -24,7 +25,12 @@ const AppContext = ({ children }) => (
 );
 
 const App = ({ children }) => {
-  return <Layout>{children}</Layout>;
+  return (
+    <Layout>
+      {children}
+      <SnackbarProvider />
+    </Layout>
+  );
 };
 
 export { AppContext };

@@ -13,5 +13,10 @@ const apiHandler = fn => {
 export default apiHandler;
 
 export const handleApi = err => {
-  enqueueSnackbar(err.message);
+  let error = err;
+
+  if (err.name === 'InvalidStateError')
+    error = new Error('Please let the previous share get completed.');
+
+  enqueueSnackbar(error.message);
 };

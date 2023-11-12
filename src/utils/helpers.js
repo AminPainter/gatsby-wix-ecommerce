@@ -1,4 +1,5 @@
 import { media } from '@wix/sdk';
+import apiHandler from './api-handler';
 
 export const isProductInCart = (cart, productId, variantId) =>
   cart?.lineItems.find(cartItem => {
@@ -13,18 +14,11 @@ export const getImageFromWixMedia = wixMedia => {
   return url;
 };
 
-export const handleProductShare = async slug => {
-  try {
-    await navigator.share({
-      url: `${window.location.protocol}//${window.location.host}/products/${slug}`,
-    });
-  } catch (err) {
-    console.log(
-      err,
-      'Error while sharing the product. Most possible reason is clicking the share button multiple times.'
-    );
-  }
-};
+export const handleProductShare = apiHandler(async slug => {
+  await navigator.share({
+    url: `${window.location.protocol}//${window.location.host}/products/${slug}`,
+  });
+});
 
 export const compareObjects = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
