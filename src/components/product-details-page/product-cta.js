@@ -50,7 +50,7 @@ const OutOfStock = ({ productName }) => (
   <>
     <Typography variant='body2'>This item is out of stock😔</Typography>
     <Button
-      startIcon={<Icon name='MessageSquare' color='common.white' />}
+      startIcon={<Icon name='MessageSquare' />}
       onClick={() =>
         console.log(`Hey, I would like to know when ${productName} will be back in stock.`)
       }>

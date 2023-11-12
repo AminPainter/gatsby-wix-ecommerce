@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 
 import { useProductDetails } from 'hooks';
 import { ProductDetails, ProductDetailsLoader } from 'components/product-details-page';
+import SiteSeo from 'components/seo';
 
 const ProductDetailPage = ({ params }) => {
   const { product, isLoading } = useProductDetails(params.slug);
@@ -20,3 +21,5 @@ const ProductDetailPage = ({ params }) => {
 };
 
 export default ProductDetailPage;
+
+export const Head = ({ params: { slug } }) => <SiteSeo title={slug} />;

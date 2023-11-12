@@ -4,7 +4,7 @@ import { useSnapshot } from 'valtio';
 import { Box, Divider, Drawer, IconButton, Stack, Typography, styled } from '@mui/material';
 
 import CartItem from './cart-item';
-import { Icon, Button } from 'ui';
+import { Icon, Button, Heading } from 'ui';
 import { useCart } from 'hooks';
 import store from 'storage/main';
 
@@ -21,7 +21,7 @@ const Cart = () => {
       <CartScreen>
         <Box py={2} px={4}>
           <Stack direction='row' justifyContent='space-between' alignItems='center'>
-            <Typography variant='h4'>Cart</Typography>
+            <Heading>Cart</Heading>
 
             <IconButton onClick={handleCloseCart}>
               <Icon name='X' color='neutral.black' />
@@ -40,9 +40,9 @@ const Cart = () => {
             </CartItemList>
           ) : (
             <Stack height='80vh' gap={4} justifyContent='center' alignItems='center'>
-              <Typography variant='h5' textAlign='center'>
+              <Heading variant='tertiary' textAlign='center'>
                 Your cart is empty!
-              </Typography>
+              </Heading>
               <Typography width='40%' textAlign='center'>
                 Looks like you haven't added anything to your cart. Explore top categories now!
               </Typography>

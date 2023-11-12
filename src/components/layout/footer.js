@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { Divider, Stack, Typography, styled } from '@mui/material';
 
 import { Grid, Icon, Section } from 'ui';
-import logoImg from 'images/icon.png';
+import logoImg from 'images/logo.png';
 
 const Footer = () => (
   <Section component='footer' maxWidth='xl' style={{ paddingBottom: 0 }}>

@@ -27,7 +27,7 @@ const AddToCart = ({ productId, quantity, variantId }) => {
           disabled={isInCart}
           onClick={handleAddToCart}
           size='small'
-          startIcon={<Icon name='ShoppingCart' color='common.white' />}>
+          startIcon={<Icon name='ShoppingCart' />}>
           Add to cart
         </Button>
       </span>

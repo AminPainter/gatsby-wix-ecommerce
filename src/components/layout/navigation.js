@@ -6,7 +6,7 @@ import { navigationLinks } from 'utils/data';
 import { Icon } from 'ui';
 import { useCart } from 'hooks';
 import store from 'storage/main';
-import logoImg from 'images/icon.png';
+import logoImg from 'images/logo.png';
 
 const Navigation = () => {
   const { cart } = useCart();

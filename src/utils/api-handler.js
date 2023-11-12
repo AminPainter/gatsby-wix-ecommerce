@@ -1,4 +1,4 @@
-// import { enqueueSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 
 const apiHandler = fn => {
   return async (...rest) => {
@@ -13,6 +13,6 @@ const apiHandler = fn => {
 export default apiHandler;
 
 export const handleApi = err => {
-  console.log(err.message);
-  // enqueueSnackbar(err.message);
+  console.log(err);
+  enqueueSnackbar(err.message);
 };
