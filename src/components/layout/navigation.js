@@ -21,7 +21,9 @@ const Navigation = () => {
         ))}
       </Stack>
 
-      <Logo src={logoImg} alt='LOGO' />
+      <Link to='/' style={{ display: 'flex' }}>
+        <Logo src={logoImg} alt='LOGO' />
+      </Link>
 
       <Stack direction='row' gap={2}>
         <IconButton>

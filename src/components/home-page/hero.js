@@ -3,6 +3,7 @@ import { Chip, Container, Stack, Typography, styled } from '@mui/material';
 
 import { Button, Grid } from 'ui';
 import heroImg from 'images/hero.png';
+import heroBgImg from 'images/hero-bg.png';
 
 const Hero = () => (
   <header>
@@ -38,4 +39,8 @@ const HeroHeading = styled(Typography)(({ theme }) => ({
 const HeroImage = styled('img')(({ theme }) => ({
   height: '85vh',
   alignSelf: 'end',
+  backgroundImage: `url(${heroBgImg})`,
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
 }));

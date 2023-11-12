@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Hero, NewArrivals, FeaturedCollection } from 'components/home-page';
+import { Hero, NewArrivals, LatestCollection, FeaturedCollection } from 'components/home-page';
 import SiteSeo from 'components/seo';
 
 const IndexPage = () => (
   <>
     <Hero />
     <NewArrivals />
+    <LatestCollection />
     <FeaturedCollection />
     <NewArrivals />
   </>

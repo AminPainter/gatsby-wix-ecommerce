@@ -5,7 +5,7 @@ import { queryKeys } from 'utils/app-constants';
 
 const useProducts = () => {
   const { data, isLoading, error } = useQuery(queryKeys.getAllProducts, () =>
-    wixClient.products.queryProducts().limit(6).find()
+    wixClient.products.queryProducts().find()
   );
 
   return { products: data?.items, isLoading, error };

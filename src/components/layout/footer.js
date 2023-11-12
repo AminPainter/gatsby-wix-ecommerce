@@ -6,7 +6,7 @@ import { Grid, Icon, Section } from 'ui';
 import logoImg from 'images/logo.png';
 
 const Footer = () => (
-  <Section component='footer' maxWidth='xl' style={{ paddingBottom: 0 }}>
+  <Section component='footer' maxWidth='xl' style={{ paddingBottom: 0, backgroundColor: '#fff' }}>
     <FooterPartition>
       <SocialMedaiContainer>
         <Stack gap={2} direction='row' alignItems='center'>
