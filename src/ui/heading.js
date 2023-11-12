@@ -1,23 +1,27 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, styled } from '@mui/material';
 
 const Heading = ({ variant = 'secondary', children, ...rest }) => {
   switch (variant) {
     case 'secondary':
       return (
-        <Typography variant='h4' {...rest}>
+        <BaseTypography variant='h4' {...rest}>
           {children}
-        </Typography>
+        </BaseTypography>
       );
 
     case 'tertiary':
     default:
       return (
-        <Typography variant='h5' {...rest}>
+        <BaseTypography variant='h5' fontWeight={600} {...rest}>
           {children}
-        </Typography>
+        </BaseTypography>
       );
   }
 };
 
 export default Heading;
+
+const BaseTypography = styled(Typography)({
+  textTransform: 'capitalize',
+});
