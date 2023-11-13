@@ -21,6 +21,7 @@
     "@wix/ecom": "^1.0.379",
     "@wix/sdk": "^1.5.6",
     "@wix/stores": "^1.0.102",
+    "formik": "^2.4.5",
     "gatsby": "^5.12.4",
     "js-cookie": "^3.0.5",
     "notistack": "^3.0.1",

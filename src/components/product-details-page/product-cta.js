@@ -1,10 +1,12 @@
 import React from 'react';
-import { Stack, Typography } from '@mui/material';
+import { Stack, TextField, Typography } from '@mui/material';
 
 import AddToCart from 'components/cart/add-to-cart';
 import { Button, Icon } from 'ui';
 import { handleProductShare } from 'utils/helpers';
 import store from 'storage/main';
+import wixClient from 'config/wix';
+import { Formik } from 'formik';
 
 const ProductCTA = ({ productInCart, product, quantity, variantId }) => (
   <Stack gap={1}>
@@ -13,7 +15,7 @@ const ProductCTA = ({ productInCart, product, quantity, variantId }) => (
     ) : product.stock.inStock ? (
       <AddProductToCart product={product} quantity={quantity} variantId={variantId} />
     ) : (
-      <OutOfStock productName={product.name} />
+      <OutOfStock product={product} />
     )}
 
     <Button
@@ -46,15 +48,55 @@ const AddProductToCart = ({ product, quantity, variantId }) => (
   />
 );
 
-const OutOfStock = ({ productName }) => (
-  <>
-    <Typography variant='body2'>This item is out of stock😔</Typography>
-    <Button
-      startIcon={<Icon name='MessageSquare' />}
-      onClick={() =>
-        console.log(`Hey, I would like to know when ${productName} will be back in stock.`)
-      }>
-      Notify me when its back in stock
-    </Button>
-  </>
-);
+const OutOfStock = ({ product }) => {
+  const initialValues = {
+    notifyEmailAddress: '',
+  };
+
+  const handleSubmit = async values => {
+    console.log(
+      await wixClient.backInStockNotifications.createBackInStockNotificationRequest(
+        {
+          catalogReference: {
+            appId: process.env.GATSBY_WIX_ECOM_APP_ID,
+            catalogItemId: product._id,
+          },
+          email: values.notifyEmailAddress,
+          itemUrl: window.location.href,
+        },
+        {
+          image: product.media.mainMedia?.thumbnail.url,
+          name: product.name,
+          price: product.price.formatted.price,
+        }
+      )
+    );
+  };
+
+  return (
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      {formik => (
+        <form onSubmit={formik.handleSubmit}>
+          <Typography variant='body2' mb={1}>
+            This item is out of stock😔
+          </Typography>
+          <Stack direction='row' gap={1}>
+            <TextField
+              type='email'
+              name='notifyEmailAddress'
+              label='Email Address'
+              fullWidth
+              value={formik.values.notifyEmailAddress}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
+            />
+            <Button type='submit' startIcon={<Icon name='Bell' />}>
+              Notify
+            </Button>
+          </Stack>
+        </form>
+      )}
+    </Formik>
+  );
+};
