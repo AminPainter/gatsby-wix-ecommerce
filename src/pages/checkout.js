@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Grid, Section } from 'ui';
 import { CheckoutForm, CheckoutOrderSummary } from 'components/checkout-page';
+import SiteSeo from 'components/seo';
 
 const CheckoutPage = () => (
   <Section>
@@ -13,3 +14,5 @@ const CheckoutPage = () => (
 );
 
 export default CheckoutPage;
+
+export const Head = () => <SiteSeo title='Checkout' />;
