@@ -1,3 +1,4 @@
+export { default as useVisitorSession } from './use-visitor-session';
 export { default as useCategories } from './use-categories';
 export { default as useProducts } from './use-products';
 export { default as useProductDetails } from './use-product-details';

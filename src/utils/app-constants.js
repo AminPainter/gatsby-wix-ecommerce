@@ -6,3 +6,8 @@ export const queryKeys = {
   getVariant: 'get-variant',
   searchProducts: 'search-products',
 };
+
+export const cookieNames = {
+  VISITOR: 'visitor',
+  MEMBER: 'member',
+};
