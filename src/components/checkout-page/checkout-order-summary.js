@@ -43,7 +43,7 @@ const CheckoutOrderSummary = () => {
 
               <TableCell align='right'>
                 {
-                  estimate?.calculatedLineItems[idx].pricesBreakdown.totalPriceBeforeTax
+                  estimate?.calculatedLineItems[idx]?.pricesBreakdown.totalPriceBeforeTax
                     .formattedConvertedAmount
                 }
               </TableCell>

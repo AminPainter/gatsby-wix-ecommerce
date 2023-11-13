@@ -37,6 +37,7 @@ const useCart = () => {
     });
 
     queryClient.setQueryData(queryKeys.getCart, updatedCart);
+    queryClient.invalidateQueries(queryKeys.getEstimate);
   });
 
   const updateCartItemQuantity = apiHandler(async (lineItemId, quantity) => {
@@ -55,6 +56,7 @@ const useCart = () => {
       ).cart;
 
     queryClient.setQueryData(queryKeys.getCart, updatedCart);
+    queryClient.invalidateQueries(queryKeys.getEstimate);
   });
 
   return {

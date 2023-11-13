@@ -8,7 +8,10 @@ const useEstimate = () => {
     data: estimate,
     isLoading,
     error,
-  } = useQuery(queryKeys.getEstimate, () => wixClient.currentCart.estimateCurrentCartTotals());
+  } = useQuery(queryKeys.getEstimate, () => wixClient.currentCart.estimateCurrentCartTotals(), {
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+  });
 
   return { estimate, isLoading, error };
 };
