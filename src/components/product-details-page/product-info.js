@@ -1,18 +1,20 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { Box } from '@mui/material';
+
+import { Heading } from 'ui';
 
 const ProductInfo = ({ product }) => (
   <>
-    <Typography variant='h4' mt={5} mb={1}>
+    <Heading variant='tertiary' mt={5} mb={1}>
       Product descrpition
-    </Typography>
+    </Heading>
     <p dangerouslySetInnerHTML={{ __html: product.description }} />
 
     {product.additionalInfoSections.map((infoSec, idx) => (
       <Box key={idx} mt={5}>
-        <Typography variant='h4' mb={1}>
+        <Heading variant='tertiary' mb={1}>
           {infoSec.title}
-        </Typography>
+        </Heading>
         <p dangerouslySetInnerHTML={{ __html: infoSec.description }} />
       </Box>
     ))}
