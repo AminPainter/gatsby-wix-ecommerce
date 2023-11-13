@@ -4,6 +4,7 @@ export const queryKeys = {
   getProduct: 'get-product',
   getCart: 'get-cart',
   getVariant: 'get-variant',
+  getEstimate: 'get-estimate',
   searchProducts: 'search-products',
 };
 

@@ -20,8 +20,6 @@ const useCart = () => {
     { retry: false }
   );
 
-  const estimateCartTotals = apiHandler(() => wixClient.currentCart.estimateCurrentCartTotals());
-
   const addToCart = apiHandler(async (productId, quantity = 1, variantId = null) => {
     const catalogReference = {
       appId: process.env.GATSBY_WIX_ECOM_APP_ID,
@@ -64,7 +62,6 @@ const useCart = () => {
     isCartLoading: isLoading,
     addToCart,
     updateCartItemQuantity,
-    estimateCartTotals,
   };
 };
 
