@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
-import { CircularProgress, Stack } from '@mui/material';
 import Cookies from 'js-cookie';
 
 import wixClient from 'config/wix';
 import { Section } from 'ui';
 import { cookieNames } from 'utils/app-constants';
 import apiHandler from 'utils/api-handler';
+import { RingLoader } from 'components/loaders';
 
 const LoginCallbackPage = () => {
   useEffect(() => {
@@ -36,9 +36,7 @@ const LoginCallbackPage = () => {
 
   return (
     <Section>
-      <Stack minHeight='65vh' alignItems='center' justifyContent='center'>
-        <CircularProgress />
-      </Stack>
+      <RingLoader />
     </Section>
   );
 };
