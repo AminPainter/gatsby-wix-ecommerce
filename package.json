@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.17",
     "@wix/ecom": "^1.0.379",
+    "@wix/members": "^1.0.38",
     "@wix/sdk": "^1.5.6",
     "@wix/stores": "^1.0.102",
     "formik": "^2.4.5",

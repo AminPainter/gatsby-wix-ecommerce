@@ -4,16 +4,16 @@ import Cookies from 'js-cookie';
 import wixClient from 'config/wix';
 import { cookieNames } from 'utils/app-constants';
 
-const useVisitorSession = () => {
+const useTokens = () => {
   useEffect(() => {
     (async () => {
       const tokens = await wixClient.auth.generateVisitorTokens(
-        JSON.parse(Cookies.get(cookieNames.VISITOR) || null)
+        JSON.parse(Cookies.get(cookieNames.TOKENS) || null)
       );
-      Cookies.set(cookieNames.VISITOR, JSON.stringify(tokens));
+      Cookies.set(cookieNames.TOKENS, JSON.stringify(tokens));
       wixClient.auth.setTokens(tokens);
     })();
   }, []);
 };
 
-export default useVisitorSession;
+export default useTokens;

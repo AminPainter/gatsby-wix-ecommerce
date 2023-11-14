@@ -6,9 +6,10 @@ export const queryKeys = {
   getVariant: 'get-variant',
   getEstimate: 'get-estimate',
   searchProducts: 'search-products',
+  getMyMember: 'get-my-member',
 };
 
 export const cookieNames = {
-  VISITOR: 'visitor',
-  MEMBER: 'member',
+  TOKENS: 'tokens',
+  OAUTH: 'oauthdata',
 };

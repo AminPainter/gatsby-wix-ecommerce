@@ -1,4 +1,5 @@
 import { media } from '@wix/sdk';
+
 import apiHandler from './api-handler';
 
 export const isProductInCart = (cart, productId, variantId) =>

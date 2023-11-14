@@ -8,7 +8,6 @@
 
 :root {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 
   --color-white: #f7f8fc;
   --color-black: #313437;

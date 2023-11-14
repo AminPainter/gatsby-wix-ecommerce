@@ -1,15 +1,28 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { AppBar, Badge, IconButton, Stack, styled } from '@mui/material';
+import { AppBar, Badge, IconButton, Stack, Tooltip, styled } from '@mui/material';
 
+import wixClient from 'config/wix';
 import { navigationLinks } from 'utils/data';
+import { cookieNames } from 'utils/app-constants';
 import { Icon } from 'ui';
-import { useCart } from 'hooks';
+import { useCart, useUser } from 'hooks';
 import store from 'storage/main';
 import logoImg from 'images/logo.png';
 
 const Navigation = () => {
   const { cart } = useCart();
+  const { isLoggedIn, user } = useUser();
+
+  const handleLogin = async () => {
+    const oauthData = wixClient.auth.generateOAuthData(
+      `${window.location.origin}/login-callback`,
+      window.location.href
+    );
+    localStorage.setItem(cookieNames.OAUTH, JSON.stringify(oauthData));
+    const { authUrl } = await wixClient.auth.getAuthUrl(oauthData);
+    window.location.assign(authUrl);
+  };
 
   return (
     <NavBar>
@@ -43,9 +56,17 @@ const Navigation = () => {
           </Badge>
         </IconButton>
 
-        <IconButton>
-          <Icon name='LogIn' color='neutral.black' />
-        </IconButton>
+        {isLoggedIn ? (
+          <Tooltip arrow title={user?.profile.nickname}>
+            <IconButton component={Link} to='/account'>
+              <Icon name='User' color='neutral.black' />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <IconButton onClick={handleLogin}>
+            <Icon name='LogIn' color='neutral.black' />
+          </IconButton>
+        )}
       </Stack>
     </NavBar>
   );

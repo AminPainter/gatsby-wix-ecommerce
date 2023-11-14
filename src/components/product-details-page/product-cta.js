@@ -67,7 +67,7 @@ const OutOfStock = ({ product }) => {
         {
           image: product.media.mainMedia?.thumbnail.url,
           name: product.name,
-          price: product.price.formatted.price,
+          price: JSON.stringify({ gte: product.price.price.toString() }),
         }
       )
     );

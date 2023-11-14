@@ -6,7 +6,7 @@ import { SnackbarProvider } from 'notistack';
 import Layout from 'components/layout';
 import { theme } from 'ui';
 import { handleApi } from 'utils/api-handler';
-import { useVisitorSession } from 'hooks';
+import { useTokens } from 'hooks';
 import 'styles/global.css';
 
 const queryClient = new QueryClient({
@@ -26,7 +26,7 @@ const AppContext = ({ children }) => (
 );
 
 const App = ({ children }) => {
-  useVisitorSession();
+  useTokens();
 
   return (
     <Layout>
