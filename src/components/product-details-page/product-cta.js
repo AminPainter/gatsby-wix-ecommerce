@@ -1,12 +1,12 @@
 import React from 'react';
 import { Stack, TextField, Typography } from '@mui/material';
+import { Formik } from 'formik';
 
+import wixClient from 'config/wix';
 import AddToCart from 'components/cart/add-to-cart';
 import { Button, Icon } from 'ui';
 import { handleProductShare } from 'utils/helpers';
 import store from 'storage/main';
-import wixClient from 'config/wix';
-import { Formik } from 'formik';
 
 const ProductCTA = ({ productInCart, product, quantity, variantId }) => (
   <Stack gap={1}>
@@ -67,7 +67,7 @@ const OutOfStock = ({ product }) => {
         {
           image: product.media.mainMedia?.thumbnail.url,
           name: product.name,
-          price: JSON.stringify({ gte: product.price.price.toString() }),
+          price: product.price.price.toFixed(),
         }
       )
     );

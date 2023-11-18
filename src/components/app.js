@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { SnackbarProvider } from 'notistack';
 
 import Layout from 'components/layout';
@@ -32,6 +33,7 @@ const App = ({ children }) => {
     <Layout>
       {children}
       <SnackbarProvider />
+      <ReactQueryDevtools />
     </Layout>
   );
 };
