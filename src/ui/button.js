@@ -34,6 +34,10 @@ const ButtonBase = styled(Button)(({ loading, theme, size = 'normal' }) => ({
   fontWeight: 400,
   textTransform: 'initial',
   padding: size === 'normal' ? theme.spacing(1.5, 4) : theme.spacing(0.8, 3),
+
+  '&.Mui-disabled .MuiIcon-root svg': {
+    stroke: theme.palette.grey[400],
+  },
 }));
 
 const ButtonPrimary = styled(ButtonBase)(({ theme }) => ({

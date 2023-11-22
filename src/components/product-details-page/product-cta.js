@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, TextField, Typography } from '@mui/material';
+import { Stack, TextField, Tooltip, Typography } from '@mui/material';
 import { Formik } from 'formik';
 
 import AddToCart from 'components/cart/add-to-cart';
@@ -61,9 +61,13 @@ const OutOfStock = ({ product }) => {
 
   if (mutation.isSuccess)
     return (
-      <Button endIcon={<Icon name='Bell' color='grey.400' />} disabled>
-        Notification added
-      </Button>
+      <Tooltip title='We will notify you once this item is back in stock' arrow>
+        <div>
+          <Button endIcon={<Icon name='Bell' />} sx={{ width: '100%' }} disabled>
+            Notification added
+          </Button>
+        </div>
+      </Tooltip>
     );
 
   return (

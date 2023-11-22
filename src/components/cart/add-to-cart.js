@@ -20,7 +20,7 @@ const AddToCart = ({ productId, quantity, variantId }) => {
 
   return (
     <Tooltip title={isInCart ? 'Item already in cart' : ''} arrow>
-      <span>
+      <div>
         <Button
           sx={{ width: '100%' }}
           loading={isLoading}
@@ -30,7 +30,7 @@ const AddToCart = ({ productId, quantity, variantId }) => {
           startIcon={<Icon name='ShoppingCart' />}>
           Add to cart
         </Button>
-      </span>
+      </div>
     </Tooltip>
   );
 };
