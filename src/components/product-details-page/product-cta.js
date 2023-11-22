@@ -2,10 +2,10 @@ import React from 'react';
 import { Stack, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
 
-import wixClient from 'config/wix';
 import AddToCart from 'components/cart/add-to-cart';
 import { Button, Icon } from 'ui';
 import { handleProductShare } from 'utils/helpers';
+import { useCreateBackInStockMutation } from 'hooks';
 import store from 'storage/main';
 
 const ProductCTA = ({ productInCart, product, quantity, variantId }) => (
@@ -53,25 +53,18 @@ const OutOfStock = ({ product }) => {
     notifyEmailAddress: '',
   };
 
-  const handleSubmit = async values => {
-    console.log(
-      await wixClient.backInStockNotifications.createBackInStockNotificationRequest(
-        {
-          catalogReference: {
-            appId: process.env.GATSBY_WIX_ECOM_APP_ID,
-            catalogItemId: product._id,
-          },
-          email: values.notifyEmailAddress,
-          itemUrl: window.location.href,
-        },
-        {
-          image: product.media.mainMedia?.thumbnail.url,
-          name: product.name,
-          price: product.price.price.toFixed(),
-        }
-      )
-    );
+  const mutation = useCreateBackInStockMutation();
+
+  const handleSubmit = values => {
+    mutation.mutate({ product, notifyEmailAddress: values.notifyEmailAddress });
   };
+
+  if (mutation.isSuccess)
+    return (
+      <Button endIcon={<Icon name='Bell' color='grey.400' />} disabled>
+        Notification added
+      </Button>
+    );
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -91,7 +84,7 @@ const OutOfStock = ({ product }) => {
               onBlur={formik.handleBlur}
               required
             />
-            <Button type='submit' startIcon={<Icon name='Bell' />}>
+            <Button type='submit' startIcon={<Icon name='Bell' />} loading={formik.isSubmitting}>
               Notify
             </Button>
           </Stack>

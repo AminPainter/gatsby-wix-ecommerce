@@ -17,6 +17,10 @@ export const handleApi = err => {
 
   if (err.name === 'InvalidStateError')
     error = new Error('Please let the previous share get completed.');
+  else if (
+    err?.details?.applicationError?.code === 'BACK_IN_STOCK_NOTIFICATION_REQUEST_ALREADY_EXISTS'
+  )
+    error = new Error('Your request has already been received.');
 
   enqueueSnackbar(error.message);
 };

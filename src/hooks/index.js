@@ -9,3 +9,5 @@ export { default as useSearchProducts } from './use-search-products';
 export { default as useVariant } from './use-variant';
 export { default as useEstimate } from './use-estimate';
 export { default as useUser } from './use-user';
+
+export { default as useCreateBackInStockMutation } from './use-create-back-in-stock-mutation';
